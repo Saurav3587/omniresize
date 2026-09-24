@@ -10,3 +10,6 @@ desktop.ini
 # Node
 node_modules/
 npm-debug.log
+
+# Archives & deployment artifacts
+*.zip

@@ -6,4 +6,3 @@ node_modules/
 *.zip
 package.json
 package-lock.json
-traffic_growth_playbook.md
