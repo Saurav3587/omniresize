@@ -41,6 +41,7 @@
   <link rel="stylesheet" href="styles/editor.css?v=4.0">
   <link rel="stylesheet" href="styles/bulk.css?v=4.0">
   <link rel="stylesheet" href="styles/footer.css?v=4.0">
+  <link rel="stylesheet" href="styles/studio_modern.css?v=4.0">
 
   <!-- Schema.org JSON-LD Structured Data for Google Rich Snippets -->
   <script type="application/ld+json">
@@ -157,7 +158,7 @@
   <!-- Google AdSense Monetization -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3438076900055396" crossorigin="anonymous"></script>
 </head>
-<body class="dark-theme">
+<body>
   <!-- Main Application Wrapper -->
   <div class="app-container" id="appContainer">
 
@@ -398,57 +399,256 @@
       <!-- Global Hidden File Input for Dropzone, Studio & Bulk Uploads -->
       <input type="file" id="fileInput" multiple accept="image/*,.heic,.heif" class="file-input-hidden" tabindex="-1" aria-hidden="true">
 
-      <!-- Upload View (Initial State) -->
+      <!-- Upload View & Modern Studio Dashboard -->
       <section class="dropzone-screen" id="dropzoneScreen">
-        <div class="dropzone-card" id="dropArea">
-          <div class="dropzone-visual">
-            <div class="dropzone-icon-ring">
-              <i class="fa-solid fa-cloud-arrow-up"></i>
+        <div class="modern-studio-wrap">
+          <!-- Top Header Banner -->
+          <div class="modern-header-banner">
+            <div class="modern-header-left">
+              <div class="modern-app-icon">
+                <i class="fa-solid fa-image"></i>
+              </div>
+              <div class="modern-header-title-box">
+                <h1>Image Resizer Tool</h1>
+                <p>Resize your images quickly and easily</p>
+              </div>
+            </div>
+            <div class="modern-header-actions">
+              <button type="button" class="modern-pill-btn btn-theme-pill" id="btnModernThemeToggle">
+                <i class="fa-solid fa-moon" id="iconModernTheme"></i>
+                <span id="labelModernTheme">Dark Mode</span>
+              </button>
+              <button type="button" class="modern-pill-btn btn-reset-pill" id="btnModernResetAll">
+                <i class="fa-solid fa-rotate-right"></i>
+                <span>Reset All</span>
+              </button>
             </div>
           </div>
 
-          <h2 class="dropzone-title">Drag & Drop your images here</h2>
-          <p class="dropzone-subtitle">or <label for="fileInput" class="btn-link" id="btnBrowseFiles" style="cursor: pointer;">browse files</label> from your computer</p>
+          <!-- Two-Column Responsive Dashboard Grid -->
+          <div class="modern-dashboard-grid">
+            <!-- Left Column: Controls & Options -->
+            <div class="modern-col-controls">
+              <!-- Card 1: Upload Image -->
+              <div class="modern-card">
+                <div class="modern-card-header">
+                  <h3 class="modern-card-title"><i class="fa-solid fa-cloud-arrow-up icon-purple"></i> 1. Upload Image</h3>
+                </div>
+                
+                <div class="modern-upload-dropzone" id="dropArea">
+                  <div class="upload-icon-circle">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                  </div>
+                  <div class="upload-prompt-text">Drag &amp; Drop your image here</div>
+                  <div class="upload-sub-or">or</div>
+                  <button type="button" class="btn-choose-file" id="btnModernChooseImage">Choose Image</button>
+                </div>
 
-          <div class="dropzone-features-pill">
-            <span><i class="fa-solid fa-shield-halved"></i> 100% In-Browser Privacy</span>
-            <span><i class="fa-solid fa-bolt"></i> No Size Limits</span>
-            <span><i class="fa-solid fa-layer-group"></i> Batch Support</span>
-            <span><i class="fa-solid fa-paste"></i> Ctrl + V to Paste</span>
-          </div>
+                <!-- Uploaded file strip -->
+                <div class="modern-file-strip" id="modernFileStrip">
+                  <div class="modern-file-strip-left">
+                    <img src="assets/nature-landscape.jpg" alt="Preview thumb" class="modern-file-thumb-preview" id="modernFileThumb">
+                    <div class="modern-file-info">
+                      <span class="modern-file-name" id="modernFileName">nature-landscape.jpg</span>
+                      <span class="modern-file-meta" id="modernFileMeta">2.45 MB • JPG</span>
+                    </div>
+                  </div>
+                  <button type="button" class="btn-remove-file" id="btnModernRemoveFile">
+                    <i class="fa-solid fa-trash-can"></i> Remove
+                  </button>
+                </div>
+              </div>
 
-          <!-- Sample Images Quick Start -->
-          <div class="sample-images-section">
-            <span class="sample-label">Or test with a sample photo:</span>
-            <div class="sample-list">
-              <button class="sample-chip" data-sample="landscape">
-                <i class="fa-solid fa-mountain-sun"></i> Landscape
-              </button>
-              <button class="sample-chip" data-sample="portrait">
-                <i class="fa-solid fa-user"></i> Portrait
-              </button>
-              <button class="sample-chip" data-sample="document">
-                <i class="fa-solid fa-id-card"></i> ID / Card
-              </button>
+              <!-- Card 2: Resize Options -->
+              <div class="modern-card">
+                <div class="modern-card-header">
+                  <h3 class="modern-card-title"><i class="fa-solid fa-crop-simple icon-green"></i> 2. Resize Options</h3>
+                </div>
+
+                <div class="dimensions-row">
+                  <div class="dim-input-group">
+                    <label for="modernInputW">Width (px)</label>
+                    <input type="number" id="modernInputW" class="dim-input-field" value="1280" min="1" max="15000">
+                  </div>
+
+                  <button type="button" class="btn-aspect-lock active" id="btnModernLockAspect" title="Maintain Aspect Ratio (Locked)">
+                    <i class="fa-solid fa-lock" id="iconModernLock"></i>
+                  </button>
+
+                  <div class="dim-input-group">
+                    <label for="modernInputH">Height (px)</label>
+                    <input type="number" id="modernInputH" class="dim-input-field" value="720" min="1" max="15000">
+                  </div>
+                </div>
+
+                <div class="aspect-ratio-indicator" id="modernAspectIndicator">
+                  <i class="fa-solid fa-check-circle"></i> Aspect Ratio: <span id="modernAspectVal">16:9</span>
+                </div>
+
+                <!-- Quick Scale -->
+                <div class="options-subgroup">
+                  <div class="options-subgroup-label">Quick Scale</div>
+                  <div class="pill-selection-row" id="modernQuickScaleRow">
+                    <button type="button" class="selector-pill modern-scale-pill" data-scale="25">25%</button>
+                    <button type="button" class="selector-pill modern-scale-pill" data-scale="50">50%</button>
+                    <button type="button" class="selector-pill modern-scale-pill" data-scale="75">75%</button>
+                    <button type="button" class="selector-pill modern-scale-pill active" data-scale="100">100%</button>
+                    <button type="button" class="selector-pill modern-scale-pill" data-scale="custom">Custom</button>
+                  </div>
+                </div>
+
+                <!-- Popular Sizes -->
+                <div class="options-subgroup">
+                  <div class="options-subgroup-label">Popular Sizes</div>
+                  <div class="pill-selection-row" id="modernPopularSizesRow">
+                    <button type="button" class="selector-pill modern-size-chip" data-w="320" data-h="240">320x240</button>
+                    <button type="button" class="selector-pill modern-size-chip" data-w="640" data-h="480">640x480</button>
+                    <button type="button" class="selector-pill modern-size-chip" data-w="800" data-h="600">800x600</button>
+                    <button type="button" class="selector-pill modern-size-chip" data-w="1024" data-h="768">1024x768</button>
+                    <button type="button" class="selector-pill selector-pill-outline active modern-size-chip" data-w="1280" data-h="720">1280x720</button>
+                    <button type="button" class="selector-pill modern-size-chip" data-w="1920" data-h="1080">1920x1080</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: Output Settings -->
+              <div class="modern-card">
+                <div class="modern-card-header">
+                  <h3 class="modern-card-title"><i class="fa-solid fa-gear icon-blue"></i> 3. Output Settings</h3>
+                </div>
+
+                <div class="output-settings-grid">
+                  <div class="format-selection-group">
+                    <span class="options-subgroup-label" style="margin: 0;">Format</span>
+                    <div class="format-pills-row" id="modernFormatRow">
+                      <button type="button" class="format-pill-btn active" data-format="image/jpeg">JPG</button>
+                      <button type="button" class="format-pill-btn" data-format="image/png">PNG</button>
+                      <button type="button" class="format-pill-btn" data-format="image/webp">WEBP</button>
+                    </div>
+                  </div>
+
+                  <div class="quality-slider-group">
+                    <div class="quality-slider-header">
+                      <span>Quality: <span class="quality-val-readout" id="modernQualityVal">90%</span></span>
+                    </div>
+                    <input type="range" class="modern-range-slider" id="modernRangeQuality" min="10" max="100" value="90">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dual Primary Action Buttons -->
+              <div class="modern-action-buttons-wrap">
+                <button type="button" class="btn-dual-action btn-resize-download" id="btnModernResizeDownload">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> Resize &amp; Download
+                </button>
+                <button type="button" class="btn-dual-action btn-download-image" id="btnModernDownloadImage">
+                  <i class="fa-solid fa-download"></i> Download Image
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Column: Previews & Specs -->
+            <div class="modern-col-preview">
+              <!-- Mobile Preview Tabs Switcher (Visible on small screens) -->
+              <div class="mobile-preview-tab-bar" id="mobilePreviewTabBar">
+                <button type="button" class="mobile-preview-tab-btn active" data-tab="original">
+                  <i class="fa-solid fa-image"></i> Original Image
+                </button>
+                <button type="button" class="mobile-preview-tab-btn" data-tab="resized">
+                  <i class="fa-solid fa-crop-simple"></i> Resized Preview
+                </button>
+              </div>
+
+              <!-- Card 1: Original Image -->
+              <div class="modern-card mobile-preview-card" id="cardOriginalPreview">
+                <div class="modern-card-header">
+                  <h3 class="modern-card-title"><i class="fa-solid fa-image icon-purple"></i> Original Image</h3>
+                  <span class="modern-card-badge"><i class="fa-solid fa-circle-info"></i> File Info</span>
+                </div>
+                <div class="preview-card-body">
+                  <div class="preview-media-box">
+                    <img id="modernOriginalImg" src="assets/nature-landscape.jpg" alt="Original Photo">
+                  </div>
+                  <div class="preview-specs-col">
+                    <div class="spec-item-group">
+                      <span class="spec-item-label">Dimensions</span>
+                      <span class="spec-item-value" id="specOrigDims">1920 x 1080 px</span>
+                    </div>
+                    <div class="spec-item-group">
+                      <span class="spec-item-label">File Size</span>
+                      <span class="spec-item-value" id="specOrigSize">2.45 MB</span>
+                    </div>
+                    <div class="spec-item-group">
+                      <span class="spec-item-label">Format</span>
+                      <span class="spec-item-value" id="specOrigFormat">JPG</span>
+                    </div>
+                    <div class="spec-item-group">
+                      <span class="spec-item-label">Aspect Ratio</span>
+                      <span class="spec-item-value" id="specOrigAspect">16:9</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: Resized Image Live Preview -->
+              <div class="modern-card mobile-preview-card" id="cardResizedPreview">
+                <div class="modern-card-header">
+                  <h3 class="modern-card-title"><i class="fa-solid fa-crop-simple icon-green"></i> Resized Image</h3>
+                  <span class="modern-card-badge"><i class="fa-solid fa-eye"></i> Preview</span>
+                </div>
+                <div class="preview-card-body">
+                  <div class="preview-media-box">
+                    <canvas id="modernResizedCanvas"></canvas>
+                  </div>
+                  <div class="preview-specs-col">
+                    <div class="spec-item-group">
+                      <span class="spec-item-label">Dimensions</span>
+                      <span class="spec-item-value" id="specResizedDims">1280 x 720 px</span>
+                    </div>
+                    <div class="spec-item-group">
+                      <span class="spec-item-label">Estimated Size</span>
+                      <span class="spec-item-value" id="specResizedSize">450 KB</span>
+                    </div>
+                    <div class="spec-item-group">
+                      <span class="spec-item-label">Format</span>
+                      <span class="spec-item-value" id="specResizedFormat">JPG</span>
+                    </div>
+                    <div class="spec-item-group">
+                      <span class="spec-item-label">Aspect Ratio</span>
+                      <span class="spec-item-value" id="specResizedAspect">16:9</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Privacy Bar -->
+              <div class="modern-bottom-privacy-note">
+                <div class="privacy-note-left">
+                  <i class="fa-solid fa-shield-halved text-success" style="color: #10b981;"></i>
+                  <span>Your images are processed locally in your browser. No images are uploaded to any server.</span>
+                </div>
+                <div class="privacy-note-right">
+                  <span>&copy; 2026 OmniResize Tool. All rights reserved.</span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Monetization: High-CTR Dropzone Leaderboard Banner (728x90 / Responsive) -->
-        <div class="ad-container-leaderboard" id="adDropzoneLeaderboard">
-          <span class="ad-label">ADVERTISEMENT</span>
-          <div class="ad-slot ad-slot-leaderboard">
-            <div class="ad-placeholder-content">
-              <i class="fa-solid fa-rectangle-ad"></i>
-              <div>
-                <strong>Leaderboard Advertisement (728 × 90 / Responsive)</strong>
-                <small>Ready for Google AdSense, Mediavine or custom sponsor banners</small>
+          <!-- Monetization: High-CTR Dropzone Leaderboard Banner (728x90 / Responsive) -->
+          <div class="ad-container-leaderboard" id="adDropzoneLeaderboard" style="margin-top: 24px;">
+            <span class="ad-label">ADVERTISEMENT</span>
+            <div class="ad-slot ad-slot-leaderboard">
+              <div class="ad-placeholder-content">
+                <i class="fa-solid fa-rectangle-ad"></i>
+                <div>
+                  <strong>Leaderboard Advertisement (728 × 90 / Responsive)</strong>
+                  <small>Ready for Google AdSense, Mediavine or custom sponsor banners</small>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-</section>
+      </section>
 
       <!-- Dedicated Tool Landing Screen (Opens when clicking any tool from Header or Footer) -->
       <section class="tool-landing-screen hidden" id="toolLandingScreen">

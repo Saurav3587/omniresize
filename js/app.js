@@ -112,6 +112,7 @@ class OmniResizeApp {
     this.populatePresets();
     this.checkInitialRoute();
     this.initHistoryNavigation();
+    this.initModernStudio();
   }
 
   initDOM() {
@@ -3243,6 +3244,441 @@ class OmniResizeApp {
     }
 
     modal.classList.add('active');
+  }
+
+  // =========================================================================
+  // Modern Studio Dashboard Controller (Reference UI Implementation)
+  // =========================================================================
+  initModernStudio() {
+    const modernWrap = document.querySelector('.modern-studio-wrap');
+    if (!modernWrap) return;
+
+    // Element References
+    const btnThemeToggle = document.getElementById('btnModernThemeToggle');
+    const iconModernTheme = document.getElementById('iconModernTheme');
+    const labelModernTheme = document.getElementById('labelModernTheme');
+    const btnResetAll = document.getElementById('btnModernResetAll');
+
+    const chooseBtn = document.getElementById('btnModernChooseImage');
+    const modernDropzone = document.getElementById('dropArea');
+    const fileStrip = document.getElementById('modernFileStrip');
+    const fileThumb = document.getElementById('modernFileThumb');
+    const fileName = document.getElementById('modernFileName');
+    const fileMeta = document.getElementById('modernFileMeta');
+    const removeBtn = document.getElementById('btnModernRemoveFile');
+
+    const inputW = document.getElementById('modernInputW');
+    const inputH = document.getElementById('modernInputH');
+    const btnLock = document.getElementById('btnModernLockAspect');
+    const iconLock = document.getElementById('iconModernLock');
+    const aspectVal = document.getElementById('modernAspectVal');
+
+    const scalePills = document.querySelectorAll('.modern-scale-pill');
+    const sizeChips = document.querySelectorAll('.modern-size-chip');
+    const formatBtns = document.querySelectorAll('#modernFormatRow .format-pill-btn');
+    const rangeQuality = document.getElementById('modernRangeQuality');
+    const qualityVal = document.getElementById('modernQualityVal');
+
+    const btnResizeDownload = document.getElementById('btnModernResizeDownload');
+    const btnDownloadImage = document.getElementById('btnModernDownloadImage');
+
+    const originalImg = document.getElementById('modernOriginalImg');
+    const resizedCanvas = document.getElementById('modernResizedCanvas');
+
+    const specOrigDims = document.getElementById('specOrigDims');
+    const specOrigSize = document.getElementById('specOrigSize');
+    const specOrigFormat = document.getElementById('specOrigFormat');
+    const specOrigAspect = document.getElementById('specOrigAspect');
+
+    const specResizedDims = document.getElementById('specResizedDims');
+    const specResizedSize = document.getElementById('specResizedSize');
+    const specResizedFormat = document.getElementById('specResizedFormat');
+    const specResizedAspect = document.getElementById('specResizedAspect');
+
+    const mobileTabBtns = document.querySelectorAll('.mobile-preview-tab-btn');
+    const cardOrig = document.getElementById('cardOriginalPreview');
+    const cardResized = document.getElementById('cardResizedPreview');
+
+    // State Variables
+    let isAspectLocked = true;
+    let currentImageObj = new Image();
+    let currentOriginalW = 1920;
+    let currentOriginalH = 1080;
+    let currentOriginalBytes = 2.45 * 1024 * 1024;
+    let currentOriginalFormat = 'JPG';
+    let currentFileName = 'nature-landscape.jpg';
+    let currentExportFormat = 'image/jpeg';
+    let currentQuality = 0.9;
+
+    // Helper: Calculate aspect ratio label
+    const getAspectRatioString = (w, h) => {
+      if (!w || !h) return '16:9';
+      const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
+      const divisor = gcd(w, h);
+      const ratioW = Math.round(w / divisor);
+      const ratioH = Math.round(h / divisor);
+      const floatRatio = w / h;
+
+      if (Math.abs(floatRatio - 16 / 9) < 0.03) return '16:9';
+      if (Math.abs(floatRatio - 4 / 3) < 0.03) return '4:3';
+      if (Math.abs(floatRatio - 1) < 0.02) return '1:1';
+      if (Math.abs(floatRatio - 9 / 16) < 0.03) return '9:16';
+      if (Math.abs(floatRatio - 3 / 2) < 0.03) return '3:2';
+      if (Math.abs(floatRatio - 21 / 9) < 0.03) return '21:9';
+      if (ratioW <= 20 && ratioH <= 20) return `${ratioW}:${ratioH}`;
+      return `${floatRatio.toFixed(2)}:1`;
+    };
+
+    // Helper: Format bytes
+    const formatBytes = (bytes) => {
+      if (!bytes || bytes <= 0) return '0 KB';
+      if (bytes >= 1048576) return (bytes / 1048576).toFixed(2) + ' MB';
+      return Math.round(bytes / 1024) + ' KB';
+    };
+
+    // Helper: Render resized preview canvas
+    const renderModernResized = () => {
+      if (!inputW || !inputH || !resizedCanvas) return;
+      const targetW = parseInt(inputW.value, 10) || 1280;
+      const targetH = parseInt(inputH.value, 10) || 720;
+      if (!targetW || !targetH || !currentImageObj.complete) return;
+
+      resizedCanvas.width = targetW;
+      resizedCanvas.height = targetH;
+      const ctx = resizedCanvas.getContext('2d');
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(currentImageObj, 0, 0, targetW, targetH);
+
+      // Update resized specifications
+      const ratioStr = getAspectRatioString(targetW, targetH);
+      if (specResizedDims) specResizedDims.textContent = `${targetW} x ${targetH} px`;
+      if (specResizedAspect) specResizedAspect.textContent = ratioStr;
+      if (aspectVal) aspectVal.textContent = ratioStr;
+
+      // Estimate live file size
+      try {
+        resizedCanvas.toBlob((blob) => {
+          if (blob && specResizedSize) {
+            specResizedSize.textContent = formatBytes(blob.size);
+          }
+        }, currentExportFormat, currentQuality);
+      } catch (err) {
+        const est = Math.round(targetW * targetH * 0.25 * currentQuality);
+        if (specResizedSize) specResizedSize.textContent = formatBytes(est);
+      }
+    };
+
+    // Load an image file / source into modern studio
+    const loadIntoModernStudio = (src, name = 'nature-landscape.jpg', sizeBytes = 2560000, mimeType = 'image/jpeg') => {
+      currentFileName = name;
+      currentOriginalBytes = sizeBytes;
+      const ext = name.split('.').pop().toUpperCase();
+      currentOriginalFormat = ext === 'PNG' ? 'PNG' : ext === 'WEBP' ? 'WEBP' : 'JPG';
+
+      currentImageObj = new Image();
+      currentImageObj.crossOrigin = 'anonymous';
+      currentImageObj.onload = () => {
+        currentOriginalW = currentImageObj.naturalWidth || currentImageObj.width;
+        currentOriginalH = currentImageObj.naturalHeight || currentImageObj.height;
+
+        // Update file strip
+        if (fileStrip) fileStrip.style.display = 'flex';
+        if (fileThumb) fileThumb.src = src;
+        if (fileName) fileName.textContent = name;
+        if (fileMeta) fileMeta.textContent = `${formatBytes(sizeBytes)} • ${currentOriginalFormat}`;
+
+        // Update original specs & image
+        if (originalImg) originalImg.src = src;
+        const origRatio = getAspectRatioString(currentOriginalW, currentOriginalH);
+        if (specOrigDims) specOrigDims.textContent = `${currentOriginalW} x ${currentOriginalH} px`;
+        if (specOrigSize) specOrigSize.textContent = formatBytes(sizeBytes);
+        if (specOrigFormat) specOrigFormat.textContent = currentOriginalFormat;
+        if (specOrigAspect) specOrigAspect.textContent = origRatio;
+
+        // Populate resized target dimensions
+        if (currentOriginalW >= 1280 && currentOriginalH >= 720) {
+          if (inputW) inputW.value = 1280;
+          if (inputH) inputH.value = 720;
+        } else {
+          if (inputW) inputW.value = currentOriginalW;
+          if (inputH) inputH.value = currentOriginalH;
+        }
+
+        renderModernResized();
+      };
+      currentImageObj.src = src;
+    };
+
+    // Initial load: nature landscape matching reference screenshot
+    loadIntoModernStudio('assets/nature-landscape.jpg', 'nature-landscape.jpg', 2.45 * 1024 * 1024, 'image/jpeg');
+
+    // Check saved theme and initialize state matching screenshot
+    try {
+      const savedTheme = localStorage.getItem('omniresize_theme');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+        if (iconModernTheme) iconModernTheme.className = 'fa-solid fa-sun';
+        if (labelModernTheme) labelModernTheme.textContent = 'Light Mode';
+      } else {
+        document.body.classList.remove('dark-theme');
+        if (iconModernTheme) iconModernTheme.className = 'fa-solid fa-moon';
+        if (labelModernTheme) labelModernTheme.textContent = 'Dark Mode';
+      }
+    } catch (e) {}
+
+    // Theme Toggle Handler
+    if (btnThemeToggle) {
+      btnThemeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        const isDark = document.body.classList.contains('dark-theme');
+        if (iconModernTheme) iconModernTheme.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        if (labelModernTheme) labelModernTheme.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        try { localStorage.setItem('omniresize_theme', isDark ? 'dark' : 'light'); } catch (e) {}
+      });
+    }
+
+    // Reset All Handler
+    if (btnResetAll) {
+      btnResetAll.addEventListener('click', () => {
+        if (inputW) inputW.value = 1280;
+        if (inputH) inputH.value = 720;
+        isAspectLocked = true;
+        if (btnLock) {
+          btnLock.classList.add('active');
+          btnLock.title = 'Maintain Aspect Ratio (Locked)';
+        }
+        if (iconLock) iconLock.className = 'fa-solid fa-lock';
+
+        scalePills.forEach(p => p.classList.remove('active'));
+        const p100 = Array.from(scalePills).find(p => p.dataset.scale === '100');
+        if (p100) p100.classList.add('active');
+
+        sizeChips.forEach(c => c.classList.remove('active'));
+        const c1280 = Array.from(sizeChips).find(c => c.dataset.w === '1280');
+        if (c1280) c1280.classList.add('active');
+
+        formatBtns.forEach(b => b.classList.remove('active'));
+        if (formatBtns[0]) formatBtns[0].classList.add('active');
+        currentExportFormat = 'image/jpeg';
+        if (specResizedFormat) specResizedFormat.textContent = 'JPG';
+
+        if (rangeQuality) rangeQuality.value = 90;
+        if (qualityVal) qualityVal.textContent = '90%';
+        currentQuality = 0.9;
+
+        renderModernResized();
+        this.showToast('Reset all options to default settings', 'info');
+      });
+    }
+
+    // Choose Image Button Trigger
+    if (chooseBtn && this.fileInput) {
+      chooseBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        this.fileInput.value = '';
+        this.fileInput.click();
+      });
+    }
+
+    // File input listener for Modern Studio
+    if (this.fileInput) {
+      this.fileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+          const file = e.target.files[0];
+          const reader = new FileReader();
+          reader.onload = (re) => {
+            loadIntoModernStudio(re.target.result, file.name, file.size, file.type);
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+
+    // Dropzone Drag & Drop
+    if (modernDropzone) {
+      modernDropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        modernDropzone.classList.add('dragover');
+      });
+      modernDropzone.addEventListener('dragleave', () => {
+        modernDropzone.classList.remove('dragover');
+      });
+      modernDropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        modernDropzone.classList.remove('dragover');
+        if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+          const file = e.dataTransfer.files[0];
+          const reader = new FileReader();
+          reader.onload = (re) => {
+            loadIntoModernStudio(re.target.result, file.name, file.size, file.type);
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    }
+
+    // Remove File Handler
+    if (removeBtn) {
+      removeBtn.addEventListener('click', () => {
+        if (fileStrip) fileStrip.style.display = 'none';
+        if (originalImg) originalImg.src = '';
+        if (resizedCanvas) {
+          const ctx = resizedCanvas.getContext('2d');
+          ctx.clearRect(0, 0, resizedCanvas.width, resizedCanvas.height);
+        }
+        if (specOrigDims) specOrigDims.textContent = '0 x 0 px';
+        if (specOrigSize) specOrigSize.textContent = '0 KB';
+        if (specResizedDims) specResizedDims.textContent = '0 x 0 px';
+        if (specResizedSize) specResizedSize.textContent = '0 KB';
+        this.showToast('Image removed. Drop or choose a new photo.', 'info');
+      });
+    }
+
+    // Aspect Ratio Lock Handler
+    if (btnLock) {
+      btnLock.addEventListener('click', () => {
+        isAspectLocked = !isAspectLocked;
+        btnLock.classList.toggle('active', isAspectLocked);
+        if (iconLock) {
+          iconLock.className = isAspectLocked ? 'fa-solid fa-lock' : 'fa-solid fa-lock-open';
+        }
+        btnLock.title = isAspectLocked ? 'Maintain Aspect Ratio (Locked)' : 'Aspect Ratio Unlocked';
+      });
+    }
+
+    // Width & Height inputs
+    if (inputW) {
+      inputW.addEventListener('input', () => {
+        const val = parseInt(inputW.value, 10);
+        if (isAspectLocked && val > 0 && currentOriginalW > 0 && inputH) {
+          const ratio = currentOriginalH / currentOriginalW;
+          inputH.value = Math.round(val * ratio);
+        }
+        scalePills.forEach(p => p.classList.remove('active'));
+        const customPill = Array.from(scalePills).find(p => p.dataset.scale === 'custom');
+        if (customPill) customPill.classList.add('active');
+        sizeChips.forEach(c => c.classList.remove('active'));
+        renderModernResized();
+      });
+    }
+
+    if (inputH) {
+      inputH.addEventListener('input', () => {
+        const val = parseInt(inputH.value, 10);
+        if (isAspectLocked && val > 0 && currentOriginalH > 0 && inputW) {
+          const ratio = currentOriginalW / currentOriginalH;
+          inputW.value = Math.round(val * ratio);
+        }
+        scalePills.forEach(p => p.classList.remove('active'));
+        const customPill = Array.from(scalePills).find(p => p.dataset.scale === 'custom');
+        if (customPill) customPill.classList.add('active');
+        sizeChips.forEach(c => c.classList.remove('active'));
+        renderModernResized();
+      });
+    }
+
+    // Quick Scale Pills Handler
+    scalePills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        scalePills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        const scaleVal = pill.dataset.scale;
+        if (scaleVal !== 'custom') {
+          const pct = parseInt(scaleVal, 10) / 100;
+          if (inputW) inputW.value = Math.round(currentOriginalW * pct);
+          if (inputH) inputH.value = Math.round(currentOriginalH * pct);
+          sizeChips.forEach(c => c.classList.remove('active'));
+          renderModernResized();
+        }
+      });
+    });
+
+    // Popular Sizes Chips Handler
+    sizeChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        sizeChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const w = parseInt(chip.dataset.w, 10);
+        const h = parseInt(chip.dataset.h, 10);
+        if (inputW) inputW.value = w;
+        if (inputH) inputH.value = h;
+        scalePills.forEach(p => p.classList.remove('active'));
+        renderModernResized();
+      });
+    });
+
+    // Format Selector Handler
+    formatBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        formatBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentExportFormat = btn.dataset.format;
+        const fmtName = currentExportFormat === 'image/png' ? 'PNG' : currentExportFormat === 'image/webp' ? 'WEBP' : 'JPG';
+        if (specResizedFormat) specResizedFormat.textContent = fmtName;
+        renderModernResized();
+      });
+    });
+
+    // Quality Slider Handler
+    if (rangeQuality) {
+      rangeQuality.addEventListener('input', (e) => {
+        const val = parseInt(e.target.value, 10);
+        if (qualityVal) qualityVal.textContent = `${val}%`;
+        currentQuality = val / 100;
+        renderModernResized();
+      });
+    }
+
+    // Common High-Performance Download Routine
+    const executeModernDownload = () => {
+      if (!inputW || !inputH || !currentImageObj.complete) return;
+      const targetW = parseInt(inputW.value, 10) || 1280;
+      const targetH = parseInt(inputH.value, 10) || 720;
+
+      const exportCanvas = document.createElement('canvas');
+      exportCanvas.width = targetW;
+      exportCanvas.height = targetH;
+      const ctx = exportCanvas.getContext('2d');
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(currentImageObj, 0, 0, targetW, targetH);
+
+      const ext = currentExportFormat === 'image/png' ? 'png' : currentExportFormat === 'image/webp' ? 'webp' : 'jpg';
+      const baseName = currentFileName.substring(0, currentFileName.lastIndexOf('.')) || currentFileName;
+      const downloadName = `${baseName}_resized_${targetW}x${targetH}.${ext}`;
+
+      exportCanvas.toBlob((blob) => {
+        if (!blob) return;
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = downloadName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+        this.showToast(`Saved ${downloadName} (${formatBytes(blob.size)})`, 'success');
+      }, currentExportFormat, currentQuality);
+    };
+
+    if (btnResizeDownload) btnResizeDownload.addEventListener('click', executeModernDownload);
+    if (btnDownloadImage) btnDownloadImage.addEventListener('click', executeModernDownload);
+
+    // Mobile Preview Tabs Switcher
+    mobileTabBtns.forEach(tab => {
+      tab.addEventListener('click', () => {
+        mobileTabBtns.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const selected = tab.dataset.tab;
+        if (selected === 'original') {
+          if (cardOrig) cardOrig.classList.remove('mobile-hidden');
+          if (cardResized) cardResized.classList.add('mobile-hidden');
+        } else {
+          if (cardOrig) cardOrig.classList.add('mobile-hidden');
+          if (cardResized) cardResized.classList.remove('mobile-hidden');
+        }
+      });
+    });
   }
 }
 
