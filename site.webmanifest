@@ -1,0 +1,21 @@
+{
+  "name": "OmniResize Studio",
+  "short_name": "OmniResize",
+  "description": "100% Client-Side Image Resizer, Compressor, Crop & Photo Studio",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0a0e17",
+  "theme_color": "#0a0e17",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+# Google AdSense ads.txt configuration for OmniResize Studio
+# Publisher: OmniResize (omniresize.pro)
+# Instructions: https://support.google.com/adsense/answer/7532444
+
+google.com, pub-3438076900055396, DIRECT, f08c47fec0942fa0

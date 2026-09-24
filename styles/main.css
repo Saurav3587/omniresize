@@ -1,0 +1,473 @@
+/* ==========================================================================
+   OmniResize - Professional Utility Software Design System
+   Refined, Human-Crafted, Distraction-Free UI
+   ========================================================================== */
+
+:root {
+  /* Cinematic Velvet Obsidian Palette */
+  --bg-app: #090b10;
+  --bg-surface: #0f121a;
+  --bg-surface-subdued: #0b0d13;
+  --bg-surface-elevated: #151924;
+  --bg-surface-hover: #1c2233;
+  --bg-surface-translucent: rgba(15, 18, 26, 0.88);
+  --bg-overlay: rgba(9, 11, 16, 0.88);
+
+  /* Graded Electric Indigo & Ultramarine Accents */
+  --primary-400: #818cf8;
+  --primary-500: #6366f1;
+  --primary-600: #4f46e5;
+  --primary-700: #4338ca;
+  --primary-hover: #4338ca;
+  --primary-subtle: rgba(99, 102, 241, 0.12);
+  --primary-border: rgba(99, 102, 241, 0.3);
+  --primary-gradient: linear-gradient(180deg, #6366f1 0%, #4f46e5 100%);
+  --primary-gradient-hover: linear-gradient(180deg, #7175f3 0%, #5850ec 100%);
+  --primary-gradient-active: linear-gradient(180deg, #4f46e5 0%, #3730a3 100%);
+
+  /* Graded Secondary Neutral Surfaces */
+  --secondary-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  --secondary-gradient-hover: linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.04) 100%);
+
+  /* Luminous Semantic Color-Graded Accents */
+  --accent-cyan: #38bdf8;
+  --accent-cyan-subtle: rgba(56, 189, 248, 0.12);
+  --accent-success: #10b981;
+  --accent-success-subtle: rgba(16, 185, 129, 0.12);
+  --accent-warning: #f59e0b;
+  --accent-warning-subtle: rgba(245, 158, 11, 0.12);
+  --accent-danger: #f43f5e;
+  --accent-danger-subtle: rgba(244, 63, 94, 0.12);
+
+  /* Luminous Specular Borders & High-Fidelity Text */
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-card: rgba(255, 255, 255, 0.09);
+  --border-focused: rgba(99, 102, 241, 0.55);
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-specular: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --border-specular-strong: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+
+  /* Depth & Atmospheric Glow */
+  --glass-blur: blur(16px);
+  --glass-border: 1px solid var(--border-card);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 20px -2px rgba(99, 102, 241, 0.35);
+
+  /* Typography Modular Scale (Standardized Type Hierarchy) */
+  --font-xs: 0.6875rem; /* 11px */
+  --font-sm: 0.8125rem; /* 13px */
+  --font-base: 0.875rem; /* 14px */
+  --font-md: 1rem;      /* 16px */
+  --font-lg: 1.25rem;   /* 20px */
+  --font-xl: 1.5rem;    /* 24px */
+  --font-2xl: 2rem;     /* 32px */
+  --font-main: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Physics-based Smooth Animation Timings & Curves */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: 150ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-normal: 240ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 340ms cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Standardized Corner Radii Scale (Max 5 standard steps) */
+  --radius-xs: 6px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--bg-app);
+  background-image: 
+    radial-gradient(1200px circle at 50% -80px, rgba(99, 102, 241, 0.08), transparent 75%),
+    radial-gradient(900px circle at 85% 600px, rgba(56, 189, 248, 0.035), transparent 70%);
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family: var(--font-main);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base App Container - Clean, distraction-free neutral background */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  background: transparent;
+}
+
+/* Scroll behavior for Landing / Dropzone screens */
+body:not(.in-editor):not(.in-bulk) {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body:not(.in-editor):not(.in-bulk) .studio-main {
+  flex: 1 0 auto;
+  overflow: visible;
+  min-height: auto;
+}
+
+body:not(.in-editor):not(.in-bulk) .dropzone-screen,
+body:not(.in-editor):not(.in-bulk) .tool-landing-screen {
+  overflow: visible;
+  flex: 1 0 auto;
+}
+
+/* Locked viewport strictly for Studio Editor and Bulk Resizer */
+body.in-editor,
+body.in-bulk {
+  overflow: hidden;
+  height: 100vh;
+}
+
+body.in-editor .app-container,
+body.in-bulk .app-container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+body.in-editor .studio-main,
+body.in-bulk .studio-main {
+  flex: 1 1 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body.in-editor .studio-mega-footer,
+body.in-bulk .studio-mega-footer {
+  display: none !important;
+}
+
+body.in-editor .seo-content-section,
+body.in-editor .seo-content-container,
+body.in-bulk .seo-content-section,
+body.in-bulk .seo-content-container {
+  display: none !important;
+}
+
+/* Glass Panels */
+.glass-panel {
+  background: var(--bg-surface-translucent);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Header */
+.studio-header {
+  height: 56px;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(9, 11, 16, 0.86);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 24px -4px rgba(0, 0, 0, 0.6);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-logo-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), 0 0 16px -2px rgba(99, 102, 241, 0.35);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.brand-logo-img:hover {
+  transform: scale(1.05);
+  opacity: 0.95;
+}
+
+.brand-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-title {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1;
+}
+
+.brand-title .brand-accent {
+  background: linear-gradient(135deg, #c7d2fe 0%, #818cf8 45%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.brand-tagline {
+  display: none; /* Hide cluttered subtitle for clean professional header */
+}
+
+.badge-pro {
+  display: none; /* Removed tacky glowing pro badge */
+}
+
+.gradient-text {
+  /* Removed rainbow gradient text */
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-actions .btn-secondary {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  box-shadow: none;
+}
+
+.header-actions .btn-secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: var(--text-main);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Animation Keyframes */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.985) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Desktop hidden mobile trigger */
+.mobile-menu-btn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Prevent iOS automatic zoom on text input focus */
+  input[type="text"],
+  input[type="number"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  .studio-header {
+    padding: 0 12px;
+    gap: 8px;
+  }
+
+  .header-brand {
+    gap: 8px;
+  }
+
+  .brand-logo-img {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+  }
+
+  .brand-title {
+    font-size: 15px;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-main);
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform var(--transition-fast), background var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .mobile-menu-btn:active {
+    transform: scale(0.92);
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+
+@media (max-width: 640px) {
+  .header-actions {
+    gap: 6px;
+  }
+  .header-actions .btn span:not(.badge-count) {
+    display: none;
+  }
+  .header-actions .btn-sm {
+    padding: 6px 9px;
+  }
+}
+
+@media (max-width: 520px) {
+  .header-mode-switch {
+    display: none !important;
+  }
+  #btnUndo,
+  #btnToggleCompare {
+    display: none !important;
+  }
+  .header-actions {
+    gap: 8px;
+  }
+  .studio-header {
+    padding: 0 12px;
+  }
+}
+
+
+/* Studio Main Workspace */
+.studio-main {
+  flex: 1 1 0;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Utility classes */
+.hidden {
+  display: none !important;
+}
+
+.text-success {
+  color: var(--accent-success);
+}
+
+.text-danger {
+  color: var(--accent-danger);
+}
+
+.mt-2 {
+  margin-top: 8px;
+}
+
+.mt-3 {
+  margin-top: 14px;
+}
+
+.disabled-overlay {
+  opacity: 0.35;
+  pointer-events: none;
+  filter: grayscale(40%);
+  transition: opacity var(--transition-normal);
+}
+
+/* Light Theme Variables - Clean, crisp white & slate */
+body.light-theme {
+  --bg-app: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f1f5f9;
+  --bg-surface-translucent: rgba(255, 255, 255, 0.95);
+  --bg-overlay: rgba(15, 23, 42, 0.4);
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-subtle: #64748b;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-focused: rgba(79, 70, 229, 0.6);
+  --border-glass: rgba(0, 0, 0, 0.09);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .studio-header {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .brand-title {
+  color: #0f172a;
+}
+
+body.light-theme .glass-panel {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .canvas-viewport {
+  background: #f1f5f9;
+}

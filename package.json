@@ -1,0 +1,16 @@
+{
+  "name": "omniresize",
+  "version": "1.0.0",
+  "description": "OmniResize Studio - Privacy-First In-Browser Image Resizer, Compressor & Editor",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "start": "python -m http.server 3000"
+  },
+  "keywords": [
+    "image-resizer",
+    "image-compressor",
+    "client-side"
+  ],
+  "author": "OmniResize",
+  "license": "MIT"
+}
