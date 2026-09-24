@@ -1,0 +1,9 @@
+# Cloudflare Workers / Pages Asset Ignore
+node_modules/
+.wrangler/
+.git/
+.github/
+*.zip
+package.json
+package-lock.json
+traffic_growth_playbook.md
