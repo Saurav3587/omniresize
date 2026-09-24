@@ -2648,12 +2648,16 @@ class OmniResizeApp {
 
     if (tool === 'bulk' || tool === 'bulk-resizer') {
       this.switchMode('bulk');
-    } else if (tool === 'compress-50') {
-      this.showToolLanding('compress-target', { kb: 50 });
+    } else if (tool === 'compress-10') {
+      this.showToolLanding('compress-target', { kb: 10 });
     } else if (tool === 'compress-20') {
       this.showToolLanding('compress-target', { kb: 20 });
+    } else if (tool === 'compress-50') {
+      this.showToolLanding('compress-target', { kb: 50 });
     } else if (tool === 'compress-100') {
       this.showToolLanding('compress-target', { kb: 100 });
+    } else if (tool === 'compress-200') {
+      this.showToolLanding('compress-target', { kb: 200 });
     } else if (tool === 'crop-free' || tool === 'crop') {
       this.showToolLanding('crop-free', {});
     } else if (tool === 'passport' || tool === 'passport-photo') {
@@ -2822,6 +2826,15 @@ class OmniResizeApp {
         btnText: 'Select Image for Circle Crop',
         step2: 'Frame your face or logo in the circular overlay and apply.',
         action: 'crop-circle'
+      },
+      'compress-10': {
+        title: 'Compress Image to < 10 KB',
+        desc: 'Reduce photo or digital signature file size to under 10 KB for strict online exam portals, government job forms, and thumb impressions.',
+        icon: 'fa-solid fa-gauge',
+        btnText: 'Select Image to Compress (< 10KB)',
+        step2: 'Binary search optimization automatically adjusts compression to fit strictly under 10 KB with sharp legibility.',
+        action: 'compress-target',
+        kb: 10
       },
       'compress-20': {
         title: 'Compress Image to < 20 KB',

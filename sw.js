@@ -4,9 +4,11 @@ const CACHE_NAME = 'omniresize-v4.1';
 const STATIC_ASSETS = [
   './',
   'index.html',
+  'resize-image-to-10kb.html',
   'resize-image-to-20kb.html',
   'resize-image-to-50kb.html',
   'resize-image-to-100kb.html',
+  'resize-image-to-200kb.html',
   'bulk-image-resizer.html',
   'passport-photo-maker.html',
   'crop-image.html',
