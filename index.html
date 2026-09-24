@@ -403,28 +403,42 @@
             </div>
           </div>
 
-          <h2 class="dropzone-title">Drag &amp; Drop your images here</h2>
-          <p class="dropzone-subtitle">or <label for="fileInput" class="btn-link" id="btnBrowseFiles" style="cursor: pointer;">browse files</label> from your computer</p>
+          <h2 class="dropzone-title">Free In-Browser Image Resizer</h2>
+          <p class="dropzone-subtitle">Resize by dimensions, percentage, or target file size (KB) • 100% Free &amp; Private</p>
 
-          <div class="dropzone-actions" style="display: flex; justify-content: center; gap: 12px; margin-bottom: 24px; flex-wrap: wrap;">
-            <label for="fileInput" class="btn btn-primary btn-lg" id="btnSelectFiles" style="cursor: pointer;">
-              <i class="fa-solid fa-folder-open"></i> Select Images
+          <div class="dropzone-actions">
+            <label for="fileInput" class="btn btn-hero-upload" id="btnSelectFiles" style="cursor: pointer;">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              <span>Select Images to Resize</span>
             </label>
-            <button type="button" class="btn btn-secondary btn-lg" id="btnPasteClipboard">
-              <i class="fa-solid fa-clipboard"></i> Paste from Clipboard
+            <button type="button" class="btn btn-paste-hero" id="btnPasteClipboard" title="Paste screenshot from clipboard (Ctrl + V)">
+              <i class="fa-solid fa-paste"></i>
+              <span>Paste (Ctrl + V)</span>
             </button>
           </div>
 
           <div class="dropzone-features-pill">
             <span><i class="fa-solid fa-shield-halved"></i> 100% In-Browser Privacy</span>
             <span><i class="fa-solid fa-bolt"></i> No Size Limits</span>
-            <span><i class="fa-solid fa-layer-group"></i> Batch Support</span>
-            <span><i class="fa-solid fa-paste"></i> Ctrl + V to Paste</span>
+            <span><i class="fa-solid fa-layer-group"></i> Batch Multi-Upload</span>
+            <span><i class="fa-solid fa-keyboard"></i> Ctrl + V to Paste</span>
+          </div>
+
+          <!-- Quick Common Tasks Shortcuts -->
+          <div class="quick-tasks-bar">
+            <span class="quick-tasks-label"><i class="fa-solid fa-bolt text-accent"></i> Popular Tools:</span>
+            <div class="quick-tasks-pills">
+              <a href="resize-image-to-50kb.html" class="quick-task-pill"><i class="fa-solid fa-gauge-high"></i> Resize to 50KB</a>
+              <a href="resize-image-to-20kb.html" class="quick-task-pill"><i class="fa-solid fa-gauge-high"></i> Resize to 20KB</a>
+              <a href="passport-photo-maker.html" class="quick-task-pill"><i class="fa-solid fa-id-card"></i> Passport Photo Maker</a>
+              <a href="crop-image.html" class="quick-task-pill"><i class="fa-solid fa-crop-simple"></i> Crop Image</a>
+              <a href="bulk-image-resizer.html" class="quick-task-pill"><i class="fa-solid fa-layer-group"></i> Bulk Resizer</a>
+            </div>
           </div>
 
           <!-- Sample Images Quick Start -->
           <div class="sample-images-section">
-            <span class="sample-label">Or test with a sample photo:</span>
+            <span class="sample-label">Or test features instantly with a sample photo:</span>
             <div class="sample-list">
               <button class="sample-chip" data-sample="landscape">
                 <i class="fa-solid fa-mountain-sun"></i> Landscape
