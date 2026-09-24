@@ -3231,7 +3231,7 @@ if (document.readyState === 'loading') {
 // Register Service Worker for Offline PWA Support
 if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js?v=4.0')
+    navigator.serviceWorker.register('sw.js?v=4.1')
       .then((reg) => {
         reg.update();
         console.log('OmniResize ServiceWorker registered (v4.0 Ready):', reg.scope);

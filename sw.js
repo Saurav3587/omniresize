@@ -1,5 +1,5 @@
 // OmniResize Studio — Offline Service Worker (PWA)
-const CACHE_NAME = 'omniresize-v4.0';
+const CACHE_NAME = 'omniresize-v4.1';
 
 const STATIC_ASSETS = [
   './',
