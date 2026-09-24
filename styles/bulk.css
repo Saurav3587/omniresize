@@ -5,12 +5,12 @@
 /* Header Mode Switcher */
 .header-mode-switch {
   display: flex;
-  background: rgba(10, 13, 22, 0.85);
-  border: 1px solid var(--border-specular);
+  background: #f1f5f9;
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-full);
   padding: 3px;
   gap: 3px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .mode-switch-btn {
@@ -84,14 +84,13 @@
   min-width: 340px;
   max-width: 420px;
   height: 100%;
-  border-right: 1px solid var(--border-specular);
-  background: rgba(11, 14, 23, 0.96);
-  backdrop-filter: var(--glass-blur);
+  border-right: 1px solid var(--border-subtle);
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   z-index: 20;
   overflow: hidden;
-  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4), inset -1px 0 0 rgba(255, 255, 255, 0.06);
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.04);
 }
 
 .bulk-sidebar-header {
@@ -124,8 +123,8 @@
 
 .bulk-sidebar-footer {
   padding: 16px 20px;
-  border-top: 1px solid var(--border-specular);
-  background: rgba(8, 11, 18, 0.98);
+  border-top: 1px solid var(--border-subtle);
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -146,8 +145,8 @@
 .bulk-summary-bar {
   height: 56px;
   padding: 0 20px;
-  border-bottom: 1px solid var(--border-specular);
-  background: rgba(12, 16, 26, 0.7);
+  border-bottom: 1px solid var(--border-subtle);
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -167,11 +166,11 @@
   gap: 6px;
   font-size: 12px;
   color: var(--text-muted);
-  background: rgba(20, 26, 42, 0.6);
-  border: 1px solid var(--border-specular);
+  background: #f8fafc;
+  border: 1px solid var(--border-subtle);
   padding: 5px 12px;
   border-radius: var(--radius-full);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .bulk-stat-chip strong {
@@ -203,38 +202,38 @@
 
 /* Individual Bulk Card */
 .bulk-card {
-  background: linear-gradient(180deg, rgba(22, 28, 44, 0.85) 0%, rgba(13, 17, 27, 0.95) 100%);
-  border: 1px solid var(--border-specular);
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: transform 0.24s var(--ease-spring), border-color 0.2s ease, box-shadow 0.24s var(--ease-spring);
   position: relative;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
   will-change: transform;
 }
 
 .bulk-card:hover {
-  border-color: rgba(129, 140, 248, 0.55);
-  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.6), 0 0 24px rgba(99, 102, 241, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-color: var(--primary-400);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 0 16px rgba(99, 102, 241, 0.12);
   transform: translateY(-3px);
 }
 
 .bulk-card-thumb-wrap {
   width: 100%;
   height: 160px;
-  background-color: #0b0e1b;
+  background-color: #f8fafc;
   position: relative;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   /* Checkerboard */
-  background-image: linear-gradient(45deg, #151a2a 25%, transparent 25%),
-                    linear-gradient(-45deg, #151a2a 25%, transparent 25%),
-                    linear-gradient(45deg, transparent 75%, #151a2a 75%),
-                    linear-gradient(-45deg, transparent 75%, #151a2a 75%);
+  background-image: linear-gradient(45deg, #e2e8f0 25%, transparent 25%),
+                    linear-gradient(-45deg, #e2e8f0 25%, transparent 25%),
+                    linear-gradient(45deg, transparent 75%, #e2e8f0 75%),
+                    linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
   background-size: 16px 16px;
 }
 
@@ -276,7 +275,7 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: rgba(10, 14, 25, 0.85);
+  background: #ffffff;
   border: 1px solid var(--border-subtle);
   color: var(--text-muted);
   display: flex;
@@ -284,6 +283,7 @@
   justify-content: center;
   cursor: pointer;
   font-size: 11px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   transition: transform 0.18s var(--ease-spring), background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   will-change: transform;
 }
@@ -322,7 +322,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  background: rgba(255, 255, 255, 0.02);
+  background: #f8fafc;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   padding: 8px 10px;
@@ -361,10 +361,10 @@
   text-align: center;
   gap: 14px;
   color: var(--text-muted);
-  border: 2px dashed rgba(255, 255, 255, 0.12);
+  border: 2px dashed #cbd5e1;
   border-radius: var(--radius-xl);
   padding: 40px 24px;
-  background: rgba(255, 255, 255, 0.015);
+  background: #ffffff;
   cursor: pointer;
   transition: transform 0.2s var(--ease-spring), border-color 0.2s ease, background 0.2s ease;
 }
@@ -493,8 +493,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 3px;
-  background: rgba(10, 13, 22, 0.85);
-  border: 1px solid var(--border-specular);
+  background: #f1f5f9;
+  border: 1px solid var(--border-subtle);
   padding: 3px;
   border-radius: var(--radius-md);
   margin-bottom: 14px;
@@ -596,8 +596,8 @@
 }
 
 .bulk-sidebar .format-btn.bulk-fmt-btn {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-specular);
+  background: #f8fafc;
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 9px 4px;
   display: flex;
@@ -612,8 +612,8 @@
 
 .bulk-sidebar .format-btn.bulk-fmt-btn:hover {
   transform: translateY(-1.5px);
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: #f1f5f9;
+  border-color: var(--primary-400);
 }
 
 .bulk-sidebar .format-btn.bulk-fmt-btn.active {
@@ -647,8 +647,8 @@
 .bulk-sidebar .custom-text-input,
 .custom-text-input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-specular);
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   color: var(--text-main);
   padding: 8px 12px;
@@ -666,8 +666,8 @@
 
 /* Custom Select Dropdowns in Bulk Sidebar */
 .bulk-sidebar .custom-select {
-  background-color: #0f131f;
-  border: 1px solid var(--border-specular);
+  background-color: #ffffff;
+  border: 1px solid var(--border-subtle);
   color: var(--text-main);
   padding: 9px 12px;
   border-radius: var(--radius-sm);

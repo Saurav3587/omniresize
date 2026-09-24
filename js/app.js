@@ -3060,41 +3060,12 @@ class OmniResizeApp {
   }
 
   initThemeSwitcher() {
-    const btn = document.getElementById('btnThemeToggle');
-    const icon = document.getElementById('iconThemeToggle');
-    const label = document.getElementById('labelThemeToggle');
-    const btnMobile = document.getElementById('btnMobileThemeToggle');
-    const iconMobile = document.getElementById('iconMobileTheme');
-    const labelMobile = document.getElementById('labelMobileTheme');
-
-    let savedTheme = 'dark';
+    // Pure clean light theme permanently - no dark mode
+    document.body.classList.remove('dark-theme', 'light-theme');
     try {
-      savedTheme = localStorage.getItem('omni_theme') || 'dark';
+      localStorage.removeItem('omni_theme');
+      localStorage.removeItem('omniresize_theme');
     } catch (_) {}
-
-    const applyThemeState = (isLight) => {
-      document.body.classList.toggle('light-theme', isLight);
-      const iconClass = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-      const labelText = isLight ? 'Light Theme' : 'Dark Theme';
-      if (icon) icon.className = iconClass;
-      if (label) label.textContent = labelText;
-      if (iconMobile) iconMobile.className = iconClass;
-      if (labelMobile) labelMobile.textContent = labelText;
-    };
-
-    applyThemeState(savedTheme === 'light');
-
-    const toggleTheme = () => {
-      const isLight = document.body.classList.toggle('light-theme');
-      try {
-        localStorage.setItem('omni_theme', isLight ? 'light' : 'dark');
-      } catch (_) {}
-      applyThemeState(isLight);
-      this.showToast(`Switched to ${isLight ? 'Light' : 'Dark'} theme`, 'info');
-    };
-
-    if (btn) btn.addEventListener('click', toggleTheme);
-    if (btnMobile) btnMobile.addEventListener('click', toggleTheme);
   }
 
   initMobileNav() {
@@ -3254,9 +3225,6 @@ class OmniResizeApp {
     if (!modernWrap) return;
 
     // Element References
-    const btnThemeToggle = document.getElementById('btnModernThemeToggle');
-    const iconModernTheme = document.getElementById('iconModernTheme');
-    const labelModernTheme = document.getElementById('labelModernTheme');
     const btnResetAll = document.getElementById('btnModernResetAll');
 
     const chooseBtn = document.getElementById('btnModernChooseImage');
@@ -3412,31 +3380,6 @@ class OmniResizeApp {
 
     // Initial load: nature landscape matching reference screenshot
     loadIntoModernStudio('assets/nature-landscape.jpg', 'nature-landscape.jpg', 2.45 * 1024 * 1024, 'image/jpeg');
-
-    // Check saved theme and initialize state matching screenshot
-    try {
-      const savedTheme = localStorage.getItem('omniresize_theme');
-      if (savedTheme === 'dark') {
-        document.body.classList.add('dark-theme');
-        if (iconModernTheme) iconModernTheme.className = 'fa-solid fa-sun';
-        if (labelModernTheme) labelModernTheme.textContent = 'Light Mode';
-      } else {
-        document.body.classList.remove('dark-theme');
-        if (iconModernTheme) iconModernTheme.className = 'fa-solid fa-moon';
-        if (labelModernTheme) labelModernTheme.textContent = 'Dark Mode';
-      }
-    } catch (e) {}
-
-    // Theme Toggle Handler
-    if (btnThemeToggle) {
-      btnThemeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-theme');
-        const isDark = document.body.classList.contains('dark-theme');
-        if (iconModernTheme) iconModernTheme.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-        if (labelModernTheme) labelModernTheme.textContent = isDark ? 'Light Mode' : 'Dark Mode';
-        try { localStorage.setItem('omniresize_theme', isDark ? 'dark' : 'light'); } catch (e) {}
-      });
-    }
 
     // Reset All Handler
     if (btnResetAll) {
