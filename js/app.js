@@ -2614,6 +2614,8 @@ class OmniResizeApp {
         this.updateStats();
         this.showToast(`Output format set to ${ext.toUpperCase()}`, 'success');
       }
+    } else if (action === 'convert-format') {
+      this.switchTab('compress');
     } else if (action === 'tab-frame') {
       this.switchTab('frame');
     } else if (action === 'tab-magic-eraser') {
@@ -2652,12 +2654,18 @@ class OmniResizeApp {
       this.showToolLanding('compress-target', { kb: 10 });
     } else if (tool === 'compress-20') {
       this.showToolLanding('compress-target', { kb: 20 });
+    } else if (tool === 'compress-30') {
+      this.showToolLanding('compress-target', { kb: 30 });
     } else if (tool === 'compress-50') {
       this.showToolLanding('compress-target', { kb: 50 });
     } else if (tool === 'compress-100') {
       this.showToolLanding('compress-target', { kb: 100 });
     } else if (tool === 'compress-200') {
       this.showToolLanding('compress-target', { kb: 200 });
+    } else if (tool === 'compress-500') {
+      this.showToolLanding('compress-target', { kb: 500 });
+    } else if (tool === 'convert' || tool === 'convert-format') {
+      this.showToolLanding('convert-format', {});
     } else if (tool === 'crop-free' || tool === 'crop') {
       this.showToolLanding('crop-free', {});
     } else if (tool === 'passport' || tool === 'passport-photo') {
@@ -2845,6 +2853,15 @@ class OmniResizeApp {
         action: 'compress-target',
         kb: 20
       },
+      'compress-30': {
+        title: 'Compress Image to < 30 KB',
+        desc: 'Compress photos and digital signatures strictly under 30 KB for exam applications, SSC, UPSC, and state PSC job portals.',
+        icon: 'fa-solid fa-gauge',
+        btnText: 'Select Image to Compress (< 30KB)',
+        step2: 'Binary search optimization automatically adjusts compression to fit strictly under 30 KB.',
+        action: 'compress-target',
+        kb: 30
+      },
       'compress-50': {
         title: 'Compress Image to < 50 KB',
         desc: 'Compress photos under 50 KB without losing clarity. Ideal for passport photos, SSC, UPSC, and exam application forms.',
@@ -2888,6 +2905,14 @@ class OmniResizeApp {
         btnText: 'Select Image to Compress',
         step2: 'Slide the quality control or enter custom KB target for instant compression.',
         action: 'compress-panel'
+      },
+      'convert-format': {
+        title: 'Image Format Converter',
+        desc: 'Convert any image instantly between JPG, PNG, WebP, AVIF, PDF, and HEIC with client-side privacy, transparency support, and lossless quality.',
+        icon: 'fa-solid fa-repeat',
+        btnText: 'Select Image to Convert',
+        step2: 'Choose your desired format (JPG, PNG, WebP, AVIF, PDF) and download instantly.',
+        action: 'convert-format'
       },
       'convert-jpg': {
         title: 'Convert Image to JPG / JPEG',

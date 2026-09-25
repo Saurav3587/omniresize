@@ -1469,6 +1469,34 @@
   margin: 14px auto 0 auto;
 }
 
+/* AdSense Core Web Vitals (CLS) Layout Stability */
+ins.adsbygoogle[data-ad-status="unfilled"] {
+  display: none !important;
+}
+
+ins.adsbygoogle {
+  display: block;
+  contain: layout;
+  transition: min-height 0.2s ease-out;
+}
+
+.ad-wrapper-responsive {
+  min-height: 90px;
+  width: 100%;
+  max-width: 970px;
+  margin: 16px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  contain: layout style;
+}
+
+@media (max-width: 768px) {
+  .ad-wrapper-responsive {
+    min-height: 50px;
+  }
+}
+
 .ad-label {
   font-size: 9px;
   font-weight: 700;

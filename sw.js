@@ -1,14 +1,17 @@
 // OmniResize Studio — Offline Service Worker (PWA)
-const CACHE_NAME = 'omniresize-v4.2';
+const CACHE_NAME = 'omniresize-v4.3';
 
 const STATIC_ASSETS = [
   './',
   'index.html',
   'resize-image-to-10kb.html',
   'resize-image-to-20kb.html',
+  'resize-image-to-30kb.html',
   'resize-image-to-50kb.html',
   'resize-image-to-100kb.html',
   'resize-image-to-200kb.html',
+  'resize-image-to-500kb.html',
+  'convert-image-format.html',
   'bulk-image-resizer.html',
   'passport-photo-maker.html',
   'crop-image.html',

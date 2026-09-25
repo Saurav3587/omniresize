@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OmniResize Studio — Advanced Image Resizer, Compressor & Editor</title>
-  <meta name="description" content="Free, privacy-first online image studio. Resize by dimensions, percentage, social media presets or target file size (KB). Crop, compress, convert formats, add watermarks, and batch process directly in your browser.">
-  <meta name="keywords" content="image resizer, compress image to 50kb, photo resizer, crop image, convert webp to png, batch image resizer, passport photo resizer">
+  <title>Image Format Converter — Convert JPG, PNG, WebP, AVIF, HEIC, PDF Free | OmniResize</title>
+  <meta name="description" content="Free online image format converter. Convert images instantly between JPG, PNG, WebP, AVIF, PDF, and iPhone HEIC. 100% private in-browser conversion with batch support.">
+  <meta name="keywords" content="image format converter, convert png to jpg, convert jpg to png, convert webp to jpg, convert heic to jpg, image to pdf, convert avif to png, batch image converter">
 
   <!-- Favicon & Theme Color -->
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
@@ -14,18 +14,19 @@
   <link rel="manifest" href="site.webmanifest">
 
   <!-- Open Graph / Social Sharing -->
-  <link rel="canonical" href="https://omniresize.pro/">
+  <link rel="canonical" href="https://omniresize.pro/convert-image-format">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://omniresize.pro/">
-  <meta property="og:title" content="OmniResize Studio — Advanced Image Resizer, Compressor & Editor">
-  <meta property="og:description" content="Free, 100% in-browser image studio. Resize, crop, compress to target KB, convert formats, add watermarks, and batch process without server uploads.">
+  <meta property="og:url" content="https://omniresize.pro/convert-image-format">
+  <meta property="og:title" content="Image Format Converter Online Free — JPG, PNG, WebP, AVIF, PDF | OmniResize">
+  <meta property="og:description" content="Convert pictures between JPG, PNG, WebP, AVIF, PDF, and iPhone HEIC format directly in your browser. 100% private with zero file size limits.">
   <meta property="og:image" content="https://omniresize.pro/assets/logo.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="OmniResize Studio — Advanced Image Resizer, Compressor & Editor">
-  <meta name="twitter:description" content="Free, 100% in-browser image studio. Resize, crop, compress to target KB, convert formats, and batch process.">
+  <meta name="twitter:title" content="Image Format Converter Online Free | OmniResize">
+  <meta name="twitter:description" content="Convert between JPG, PNG, WebP, AVIF, and PDF in seconds without server uploads.">
   <meta name="twitter:image" content="assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -33,7 +34,6 @@
   <!-- JSZip for Batch Download -->
   <script src="js/vendor/jszip.min.js?v=4.0"></script>
 
-  
   <!-- Stylesheets -->
   <link rel="stylesheet" href="styles/main.css?v=4.0">
   <link rel="stylesheet" href="styles/components.css?v=4.0">
@@ -46,11 +46,11 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "OmniResize Studio",
-    "url": "https://omniresize.pro/",
-    "description": "Free, privacy-first online image studio. Resize by dimensions, percentage, social media presets or target file size (KB). Crop, compress, convert formats, and batch process directly in your browser without uploading to any server.",
+    "name": "OmniResize Image Format Converter",
+    "url": "https://omniresize.pro/convert-image-format",
+    "description": "Convert images instantly between JPG, PNG, WebP, AVIF, PDF, and Apple HEIC format completely client-side in your browser.",
     "applicationCategory": "MultimediaApplication",
-    "operatingSystem": "All modern browsers (Chrome, Firefox, Safari, Edge)",
+    "operatingSystem": "All modern browsers",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -59,20 +59,10 @@
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "ratingCount": "1280",
+      "ratingCount": "980",
       "bestRating": "5",
       "worstRating": "1"
-    },
-    "featureList": [
-      "100% Client-Side In-Browser Image Processing",
-      "Zero File Size Limits & 0ms Upload Latency",
-      "Target File Size Compression in KB and MB (20KB, 50KB, 100KB)",
-      "Batch Image Resizer with ZIP Download",
-      "True 300 DPI JFIF Header Injection for Passport & Print",
-      "Interactive Cropping with Aspect Ratio Constraints",
-      "Free 2x HD and 4x Ultra HD Super-Resolution Upscaling",
-      "Privacy Blur & Censor Bar Tool"
-    ]
+    }
   }
   </script>
 
@@ -83,42 +73,34 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How do I resize an image to under 50 KB or 20 KB?",
+        "name": "How to resize an image to exactly under 50 KB?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Simply upload your photo to OmniResize, go to the Compress tab, and select the '< 50 KB' or '< 20 KB' chip. Our binary search compression engine will automatically calculate the optimal quality and dimension scaling to guarantee the file stays under your target size without manual guessing."
+          "text": "Upload your photo to OmniResize. The '< 50 KB' target compression mode is pre-selected automatically. Our binary search engine iteratively tunes compression quality and dimensions so your photo weighs less than 50 KB without blurriness."
         }
       },
       {
         "@type": "Question",
-        "name": "Are my uploaded photos safe and private?",
+        "name": "Why do exam and government application forms require images under 50 KB?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, 100%. Unlike conventional image resizers that upload your files to remote cloud servers, OmniResize processes everything locally in your web browser's memory using HTML5 Canvas and WebAssembly. Your photos never leave your device."
+          "text": "Portals for UPSC, SSC, IBPS, NEET, and university admissions manage millions of applicant uploads. To save server storage and maintain fast verification speeds, they enforce strict file size caps like 20 KB to 50 KB."
         }
       },
       {
         "@type": "Question",
-        "name": "How can I batch resize multiple images at once?",
+        "name": "Does reducing image size to 50 KB make it blurry?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Click 'Bulk Resizer' in the top navigation or drag multiple photos simultaneously onto the dropzone. You can set uniform dimensions, target file sizes, format conversions, and watermarks, then download all processed photos in a single organized ZIP archive."
+          "text": "OmniResize uses smart high-efficiency bicubic resampling and selective quantization, keeping your face, text, or signature sharp and easily readable even under 50 KB."
         }
       },
       {
         "@type": "Question",
-        "name": "Does resizing reduce the quality of my images?",
+        "name": "Are my sensitive documents and ID photos private?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "OmniResize uses multi-step bicubic resampling and optional unsharp mask sharpening kernels to maintain crisp edges and prevent blurriness during downscaling. For upscaling, our 2x HD and 4x Ultra HD super-resolution engines enhance details cleanly."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I set an image to 300 DPI for passport or printing?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "In the Resize tab, switch dimensions unit to inches, cm, or mm and select '300 DPI'. When exported as JPEG, OmniResize injects a genuine JFIF 300 DPI resolution header so photo labs and printing software detect the exact print resolution."
+          "text": "Yes. OmniResize operates 100% in your local browser memory. Your ID cards, photos, and signatures are never sent to any external server."
         }
       }
     ]
@@ -129,26 +111,26 @@
   {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    "name": "How to Resize an Image Online for Free",
-    "description": "Step-by-step guide to resizing, cropping, and compressing images directly in your browser with OmniResize.",
+    "name": "How to Compress Photo Below 50 KB",
+    "description": "3 quick steps to compress any picture under 50 KB for online forms.",
     "step": [
       {
         "@type": "HowToStep",
-        "name": "Upload Your Image",
-        "text": "Drag and drop your image onto the canvas, paste from clipboard (Ctrl+V), or click 'Select Image' to choose from your device.",
-        "url": "https://omniresize.pro/#upload"
+        "name": "Upload Photo",
+        "text": "Drag and drop or select your photo from your phone or PC.",
+        "url": "https://omniresize.pro/convert-image-format#upload"
       },
       {
         "@type": "HowToStep",
-        "name": "Choose Target Dimensions or File Size",
-        "text": "Enter custom width and height in pixels, inches, or percentage, or pick a target file size like '< 50 KB' or '< 20 KB'.",
-        "url": "https://omniresize.pro/#resize"
+        "name": "Auto-Optimize Under 50 KB",
+        "text": "The engine automatically calculates the exact quality parameters to guarantee the file is under 50 KB.",
+        "url": "https://omniresize.pro/convert-image-format#optimize"
       },
       {
         "@type": "HowToStep",
-        "name": "Download Your Resized Image",
-        "text": "Choose your preferred output format (JPG, PNG, WebP, AVIF, or PDF) and click 'Download Image' to save instantly with zero server lag.",
-        "url": "https://omniresize.pro/#download"
+        "name": "Download Resized Photo",
+        "text": "Click Download to save the 50 KB JPG image ready for immediate submission.",
+        "url": "https://omniresize.pro/convert-image-format#download"
       }
     ]
   }
@@ -156,7 +138,7 @@
   <!-- Google AdSense Monetization -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3438076900055396" crossorigin="anonymous"></script>
 </head>
-<body>
+<body data-default-tool="convert-format">
   <!-- Main Application Wrapper -->
   <div class="app-container" id="appContainer">
 
@@ -207,12 +189,10 @@
             <span>Compress</span> <i class="fa-solid fa-chevron-down"></i>
           </button>
           <div class="nav-dropdown-menu">
-            <a href="/resize-image-to-20kb" class="dropdown-link"><i class="fa-solid fa-gauge-high"></i> Compress to &lt; 20 KB</a>
-            <a href="/resize-image-to-30kb" class="dropdown-link"><i class="fa-solid fa-gauge-high"></i> Compress to &lt; 30 KB</a>
-            <a href="/resize-image-to-50kb" class="dropdown-link"><i class="fa-solid fa-gauge-high"></i> Compress to &lt; 50 KB</a>
-            <a href="/resize-image-to-100kb" class="dropdown-link"><i class="fa-solid fa-gauge-high"></i> Compress to &lt; 100 KB</a>
-            <a href="/resize-image-to-200kb" class="dropdown-link"><i class="fa-solid fa-gauge-high"></i> Compress to &lt; 200 KB</a>
-            <a href="/resize-image-to-500kb" class="dropdown-link"><i class="fa-solid fa-gauge-high"></i> Compress to &lt; 500 KB</a>
+            <a href="#" class="dropdown-link" data-nav-action="compress-target" data-kb="20"><i class="fa-solid fa-gauge-high"></i> Compress to &lt; 20 KB</a>
+            <a href="#" class="dropdown-link" data-nav-action="compress-target" data-kb="50"><i class="fa-solid fa-gauge-high"></i> Compress to &lt; 50 KB</a>
+            <a href="#" class="dropdown-link" data-nav-action="compress-target" data-kb="100"><i class="fa-solid fa-gauge-high"></i> Compress to &lt; 100 KB</a>
+            <a href="#" class="dropdown-link" data-nav-action="compress-target" data-kb="200"><i class="fa-solid fa-gauge-high"></i> Compress to &lt; 200 KB</a>
             <a href="#" class="dropdown-link" data-nav-action="compress-panel"><i class="fa-solid fa-sliders"></i> Custom Quality & KB Target</a>
           </div>
         </div>
@@ -223,7 +203,6 @@
             <span>Convert</span> <i class="fa-solid fa-chevron-down"></i>
           </button>
           <div class="nav-dropdown-menu">
-            <a href="/convert-image-format" class="dropdown-link"><i class="fa-solid fa-repeat"></i> All Formats Converter</a>
             <a href="#" class="dropdown-link" data-nav-action="convert-fmt" data-fmt="image/jpeg"><i class="fa-solid fa-file-image"></i> Convert to JPG / JPEG</a>
             <a href="#" class="dropdown-link" data-nav-action="convert-fmt" data-fmt="image/png"><i class="fa-solid fa-file-image"></i> Convert to PNG (Lossless)</a>
             <a href="#" class="dropdown-link" data-nav-action="convert-fmt" data-fmt="image/webp"><i class="fa-solid fa-globe"></i> Convert to WebP</a>
@@ -383,6 +362,7 @@
 
           <!-- Footer Settings inside Drawer -->
           <div class="mobile-nav-bottom">
+            
             <div class="mobile-privacy-badge">
               <i class="fa-solid fa-shield-halved text-success"></i> 100% In-Browser Privacy
             </div>
@@ -397,7 +377,7 @@
       <input type="file" id="fileInput" multiple accept="image/*,.heic,.heif" class="file-input-hidden" tabindex="-1" aria-hidden="true">
 
       <!-- Upload View (Initial State) -->
-      <section class="dropzone-screen" id="dropzoneScreen">
+      <section class="dropzone-screen hidden" id="dropzoneScreen">
         <div class="dropzone-card" id="dropArea">
           <div class="dropzone-visual">
             <div class="dropzone-icon-ring">
@@ -405,44 +385,19 @@
             </div>
           </div>
 
-          <h2 class="dropzone-title">Free In-Browser Image Resizer</h2>
-          <p class="dropzone-subtitle">Resize by dimensions, percentage, or target file size (KB) • 100% Free &amp; Private</p>
-
-          <div class="dropzone-actions">
-            <label for="fileInput" class="btn btn-hero-upload" id="btnSelectFiles" style="cursor: pointer;">
-              <i class="fa-solid fa-cloud-arrow-up"></i>
-              <span>Select Images to Resize</span>
-            </label>
-            <button type="button" class="btn btn-paste-hero" id="btnPasteClipboard" title="Paste screenshot from clipboard (Ctrl + V)">
-              <i class="fa-solid fa-paste"></i>
-              <span>Paste (Ctrl + V)</span>
-            </button>
-          </div>
+          <h2 class="dropzone-title">Drag & Drop your images here</h2>
+          <p class="dropzone-subtitle">or <label for="fileInput" class="btn-link" id="btnBrowseFiles" style="cursor: pointer;">browse files</label> from your computer</p>
 
           <div class="dropzone-features-pill">
             <span><i class="fa-solid fa-shield-halved"></i> 100% In-Browser Privacy</span>
             <span><i class="fa-solid fa-bolt"></i> No Size Limits</span>
-            <span><i class="fa-solid fa-layer-group"></i> Batch Multi-Upload</span>
-            <span><i class="fa-solid fa-keyboard"></i> Ctrl + V to Paste</span>
-          </div>
-
-          <!-- Quick Common Tasks Shortcuts -->
-          <div class="quick-tasks-bar">
-            <span class="quick-tasks-label"><i class="fa-solid fa-bolt text-accent"></i> Popular Tools:</span>
-            <div class="quick-tasks-pills">
-              <a href="resize-image-to-10kb.html" class="quick-task-pill"><i class="fa-solid fa-signature"></i> Resize to 10KB</a>
-              <a href="resize-image-to-20kb.html" class="quick-task-pill"><i class="fa-solid fa-gauge-high"></i> Resize to 20KB</a>
-              <a href="resize-image-to-50kb.html" class="quick-task-pill"><i class="fa-solid fa-gauge-high"></i> Resize to 50KB</a>
-              <a href="resize-image-to-200kb.html" class="quick-task-pill"><i class="fa-solid fa-file-image"></i> Resize to 200KB</a>
-              <a href="passport-photo-maker.html" class="quick-task-pill"><i class="fa-solid fa-id-card"></i> Passport Photo</a>
-              <a href="crop-image.html" class="quick-task-pill"><i class="fa-solid fa-crop-simple"></i> Crop Image</a>
-              <a href="bulk-image-resizer.html" class="quick-task-pill"><i class="fa-solid fa-layer-group"></i> Bulk Resizer</a>
-            </div>
+            <span><i class="fa-solid fa-layer-group"></i> Batch Support</span>
+            <span><i class="fa-solid fa-paste"></i> Ctrl + V to Paste</span>
           </div>
 
           <!-- Sample Images Quick Start -->
           <div class="sample-images-section">
-            <span class="sample-label">Or test features instantly with a sample photo:</span>
+            <span class="sample-label">Or test with a sample photo:</span>
             <div class="sample-list">
               <button class="sample-chip" data-sample="landscape">
                 <i class="fa-solid fa-mountain-sun"></i> Landscape
@@ -470,22 +425,23 @@
             </div>
           </div>
         </div>
-      </section>
+
+</section>
 
       <!-- Dedicated Tool Landing Screen (Opens when clicking any tool from Header or Footer) -->
-      <section class="tool-landing-screen hidden" id="toolLandingScreen">
+      <section class="tool-landing-screen" id="toolLandingScreen">
         <div class="tool-landing-hero">
           <button type="button" class="tool-back-btn" id="btnBackFromTool">
             <i class="fa-solid fa-arrow-left"></i> <span>All Tools</span>
           </button>
 
           <div class="tool-hero-icon-ring" id="toolHeroIcon">
-            <i class="fa-solid fa-ruler-combined"></i>
+            <i class="fa-solid fa-gauge-high"></i>
           </div>
 
-          <h1 class="tool-hero-title" id="toolHeroTitle">Resize Image by Dimensions</h1>
+          <h1 class="tool-hero-title" id="toolHeroTitle">Image Format Converter</h1>
           <p class="tool-hero-desc" id="toolHeroDesc">
-            Quickly change image width and height in pixels (px), inches, cm, or mm with print standard DPI control and zero blurriness.
+            Compress photos and signatures under 50 KB without blurriness. 100% free and client-side private for UPSC, SSC, IBPS, and job portals.
           </p>
 
           <div class="tool-hero-pills">
@@ -500,7 +456,7 @@
           <input type="file" id="toolFileInput" multiple accept="image/*,.heic,.heif" class="file-input-hidden">
           
           <button type="button" class="btn btn-primary btn-lg tool-hero-upload-btn" id="btnToolUploadAction">
-            <i class="fa-solid fa-cloud-arrow-up"></i> <span id="toolUploadBtnText">Select Image to Resize</span>
+            <i class="fa-solid fa-cloud-arrow-up"></i> <span id="toolUploadBtnText">Select Images to Convert</span>
           </button>
 
           <p class="dropzone-subtitle">or drag & drop images anywhere here</p>
@@ -531,7 +487,7 @@
             <div class="tool-step-card">
               <div class="tool-step-number">2</div>
               <div class="tool-step-heading">Adjust & Preview</div>
-              <div class="tool-step-text" id="toolStep2Text">Enter your target dimensions or scale percentage to resize instantly.</div>
+              <div class="tool-step-text" id="toolStep2Text">Automatic quality and dimension tuning to guarantee final file size is under 50 KB.</div>
             </div>
             <div class="tool-step-card">
               <div class="tool-step-number">3</div>
@@ -600,7 +556,7 @@
                 <button type="button" class="btn btn-primary btn-block btn-lg" id="btnDownloadSingle">
                   <i class="fa-solid fa-download"></i> Download Image
                 </button>
-                <button type="button" class="btn btn-secondary btn-block btn-sm" id="btnCopyClipboard" title="Copy uncompressed/crisp image directly to clipboard for pasting into Slack, Discord, Google Docs, etc.">
+                <button type="button" class="btn btn-secondary btn-block btn-sm" id="btnCopyClipboard" title="Copy image directly to clipboard to paste into Slack, Discord, Docs, Canva, etc.">
                   <i class="fa-solid fa-copy"></i> Copy to Clipboard
                 </button>
                 <button type="button" class="btn btn-secondary btn-block btn-sm" id="btnDownloadBatchZip">
@@ -1582,146 +1538,133 @@
       </section>
 
             <!-- ============================================================
-             SEO Content Hub: Informational Guides, Comparison & FAQs
+             SEO Content Hub: 50 KB Target Compression Guide & FAQs
              ============================================================ -->
         <div class="seo-content-section" id="seoHomeContent">
-          
           <!-- Section 1: How It Works Guide -->
           <div class="seo-block">
             <div class="seo-section-header">
-              <span class="seo-section-badge"><i class="fa-solid fa-bolt"></i> Instant & Free</span>
-              <h2 class="seo-section-title">How to Resize Images Online Without Losing Quality</h2>
-              <p class="seo-section-subtitle">Resize photos by exact pixel dimensions, percentage, social media templates, or target file size (KB) with bicubic sharpness.</p>
+              <span class="seo-section-badge"><i class="fa-solid fa-repeat"></i> Fast & Universal</span>
+              <h2 class="seo-section-title">How to Convert Image Formats Online</h2>
+              <p class="seo-section-subtitle">Effortlessly convert single photos or batch folders between modern and standard image formats.</p>
             </div>
 
             <div class="seo-howto-grid">
               <div class="seo-howto-card">
                 <div class="seo-howto-badge">1</div>
                 <div class="seo-howto-icon"><i class="fa-solid fa-file-arrow-up"></i></div>
-                <h3 class="seo-howto-title">Upload or Paste Photos</h3>
-                <p class="seo-howto-desc">Drag and drop your images into the canvas, select from your device, or press <kbd>Ctrl+V</kbd> to paste directly from your clipboard. No account required.</p>
+                <h3 class="seo-howto-title">Upload Image(s)</h3>
+                <p class="seo-howto-desc">Drag & drop your JPG, PNG, WebP, AVIF, or Apple HEIC photos, or paste directly with <kbd>Ctrl+V</kbd>.</p>
               </div>
 
               <div class="seo-howto-card">
                 <div class="seo-howto-badge">2</div>
                 <div class="seo-howto-icon"><i class="fa-solid fa-sliders"></i></div>
-                <h3 class="seo-howto-title">Set Dimensions or Target KB</h3>
-                <p class="seo-howto-desc">Input custom width & height in px, cm, or inches, or click quick chips like <strong>&lt; 50 KB</strong> or <strong>&lt; 20 KB</strong>. Aspect ratio can be locked or unlocked freely.</p>
+                <h3 class="seo-howto-title">Choose Output Format</h3>
+                <p class="seo-howto-desc">Select your desired target: JPG for universal compatibility, PNG for lossless transparency, WebP for light web pages, or PDF for document printing.</p>
               </div>
 
               <div class="seo-howto-card">
                 <div class="seo-howto-badge">3</div>
                 <div class="seo-howto-icon"><i class="fa-solid fa-download"></i></div>
-                <h3 class="seo-howto-title">Instant Export & Download</h3>
-                <p class="seo-howto-desc">Export in ultra-crisp JPG, PNG, WebP, AVIF, or PDF. Because processing runs in your browser's local memory, exports complete in under 50ms with zero wait time.</p>
+                <h3 class="seo-howto-title">Instant 1-Click Export</h3>
+                <p class="seo-howto-desc">Download individual files or grab all converted pictures in a single neat ZIP archive with zero waiting times.</p>
               </div>
             </div>
           </div>
 
-          <!-- Section 2: Comparison Matrix (OmniResize vs Legacy Cloud Resizers) -->
+          <!-- Section 2: Format Comparison Matrix -->
           <div class="seo-block">
             <div class="seo-section-header">
-              <span class="seo-section-badge"><i class="fa-solid fa-shield-halved"></i> Unmatched Privacy</span>
-              <h2 class="seo-section-title">Why OmniResize Beats Conventional Online Resizers</h2>
-              <p class="seo-section-subtitle">See why thousands of privacy-conscious creators, students, and businesses choose OmniResize over server-based tools.</p>
+              <span class="seo-section-badge"><i class="fa-solid fa-table-list"></i> Guide</span>
+              <h2 class="seo-section-title">Which Image Format Should You Choose?</h2>
+              <p class="seo-section-subtitle">A quick reference guide to pick the best format for your specific use case.</p>
             </div>
 
             <div class="seo-compare-table-wrapper">
               <table class="seo-compare-table">
                 <thead>
                   <tr>
-                    <th>Feature Comparison</th>
-                    <th class="col-highlight"><i class="fa-solid fa-bolt text-primary"></i> OmniResize Studio</th>
-                    <th>Legacy Cloud Resizers (ImageResizer, iLoveIMG)</th>
+                    <th>Format</th>
+                    <th>Best For</th>
+                    <th>Transparency</th>
+                    <th>Compression</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><strong>Privacy & Security</strong></td>
-                    <td class="col-highlight"><span class="tag-winner"><i class="fa-solid fa-check"></i> 100% In-Browser</span> (Never touches a server)</td>
-                    <td><span class="tag-loser"><i class="fa-solid fa-xmark"></i> Remote Upload</span> (Stored on cloud servers)</td>
+                    <td><strong>JPG / JPEG</strong></td>
+                    <td>Photographs, social media, government & visa upload forms</td>
+                    <td><span class="tag-loser"><i class="fa-solid fa-xmark"></i> No</span></td>
+                    <td>High (Lossy, tiny file size)</td>
                   </tr>
                   <tr>
-                    <td><strong>Upload Wait Time</strong></td>
-                    <td class="col-highlight"><span class="tag-winner"><i class="fa-solid fa-check"></i> 0ms Instant</span> (No bandwidth delay)</td>
-                    <td><span class="tag-loser"><i class="fa-solid fa-xmark"></i> Slow Upload / Download roundtrip</span></td>
+                    <td><strong>PNG</strong></td>
+                    <td>Logos, graphics, text screenshots, transparent overlays</td>
+                    <td><span class="tag-winner"><i class="fa-solid fa-check"></i> Yes (Alpha)</span></td>
+                    <td>Lossless (Pixel-perfect, larger size)</td>
                   </tr>
                   <tr>
-                    <td><strong>Maximum File Size</strong></td>
-                    <td class="col-highlight"><span class="tag-winner"><i class="fa-solid fa-check"></i> Unlimited</span> (Uses local device RAM)</td>
-                    <td><span class="tag-loser"><i class="fa-solid fa-xmark"></i> 5MB - 10MB Max</span> (Paywall for large files)</td>
+                    <td><strong>WebP</strong></td>
+                    <td>Modern websites, blogs, Google Core Web Vitals speed</td>
+                    <td><span class="tag-winner"><i class="fa-solid fa-check"></i> Yes</span></td>
+                    <td>Superior (30-40% smaller than JPG)</td>
                   </tr>
                   <tr>
-                    <td><strong>Target File Size Compression</strong></td>
-                    <td class="col-highlight"><span class="tag-winner"><i class="fa-solid fa-check"></i> Target file size</span> (&lt; 20 kB, &lt; 50 kB, &lt; 100 kB)</td>
-                    <td><span class="tag-loser"><i class="fa-solid fa-xmark"></i> Percentage Guesswork Only</span></td>
+                    <td><strong>AVIF</strong></td>
+                    <td>Next-gen web publishing, HDR photography</td>
+                    <td><span class="tag-winner"><i class="fa-solid fa-check"></i> Yes</span></td>
+                    <td>Highest (50% smaller than JPG)</td>
                   </tr>
                   <tr>
-                    <td><strong>Print DPI Control</strong></td>
-                    <td class="col-highlight"><span class="tag-winner"><i class="fa-solid fa-check"></i> True 300 / 600 DPI</span> (JFIF header embedded)</td>
-                    <td><span class="tag-loser"><i class="fa-solid fa-xmark"></i> 72 DPI Screen Default</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Super-Resolution Upscaling</strong></td>
-                    <td class="col-highlight"><span class="tag-winner"><i class="fa-solid fa-check"></i> Free 2× HD & 4× Ultra HD</span></td>
-                    <td><span class="tag-loser"><i class="fa-solid fa-xmark"></i> Paid Subscription Only</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Batch Processing & ZIP</strong></td>
-                    <td class="col-highlight"><span class="tag-winner"><i class="fa-solid fa-check"></i> Unlimited Batch Queue</span></td>
-                    <td><span class="tag-loser"><i class="fa-solid fa-xmark"></i> Capped at 5-10 images</span></td>
+                    <td><strong>PDF</strong></td>
+                    <td>Official documents, college forms, printable sheets</td>
+                    <td>White canvas</td>
+                    <td>Document standard</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
 
-          <!-- Section 3: Frequently Asked Questions (Accordion Matching JSON-LD Schema) -->
+          <!-- Section 3: FAQs -->
           <div class="seo-block">
             <div class="seo-section-header">
-              <span class="seo-section-badge"><i class="fa-solid fa-circle-question"></i> Help & FAQs</span>
-              <h2 class="seo-section-title">Frequently Asked Questions</h2>
-              <p class="seo-section-subtitle">Everything you need to know about resizing, compressing, and editing photos on OmniResize.</p>
+              <span class="seo-section-badge"><i class="fa-solid fa-circle-question"></i> FAQs</span>
+              <h2 class="seo-section-title">Frequently Asked Questions About Image Conversion</h2>
+              <p class="seo-section-subtitle">Everything you need to know about converting photos securely on OmniResize.</p>
             </div>
 
             <div class="seo-faq-accordion">
               <details class="seo-faq-item" open>
-                <summary class="seo-faq-summary">How do I resize an image to under 50 KB or 20 KB?</summary>
+                <summary class="seo-faq-summary">Does converting PNG to JPG remove transparency?</summary>
                 <div class="seo-faq-answer">
-                  Simply upload your photo to OmniResize, navigate to the <strong>Compress</strong> tab, and click the <strong>&lt; 50 KB</strong> or <strong>&lt; 20 KB</strong> quick chip. Our binary search compression algorithm will automatically calculate the exact JPEG/WebP quality level and dimension scaling to guarantee your file stays under the target size without manual trial and error.
+                  Yes, standard JPEG format does not support transparent alpha channels. When converting PNG to JPG, transparent areas are cleanly filled with crisp solid white background.
                 </div>
               </details>
 
               <details class="seo-faq-item">
-                <summary class="seo-faq-summary">Are my uploaded photos safe and confidential?</summary>
+                <summary class="seo-faq-summary">Can I convert iPhone HEIC photos to JPG?</summary>
                 <div class="seo-faq-answer">
-                  Yes, 100%. Conventional resizers upload your photos to external servers where they can be cached or logged. OmniResize runs entirely inside your browser's local sandbox using HTML5 Canvas and WebAssembly. Your photos never leave your device, making it 100% compliant for sensitive IDs, passport scans, signatures, and confidential documents.
+                  Yes! OmniResize features a built-in HEIC decoder that directly converts Apple iPhone Live Photos and .heic/.heif files into standard JPG or PNG images on Windows, Mac, and Android without requiring iTunes.
                 </div>
               </details>
 
               <details class="seo-faq-item">
-                <summary class="seo-faq-summary">Can I batch resize multiple images at the same time?</summary>
+                <summary class="seo-faq-summary">Are my confidential pictures uploaded to any server?</summary>
                 <div class="seo-faq-answer">
-                  Yes! Click <strong>Bulk Resizer</strong> in the top menu or drag and drop a folder of images into the dropzone. You can apply uniform percentage scaling, max-fit bounding boxes, exact dimensions, or target file size limits across hundreds of images, then download all results in a single organized ZIP archive.
+                  Never. OmniResize operates 100% locally in your device's browser memory (RAM) using HTML5 Canvas and WebAssembly. Your images never leave your computer or phone.
                 </div>
               </details>
 
               <details class="seo-faq-item">
-                <summary class="seo-faq-summary">Will resizing blur or distort my image quality?</summary>
+                <summary class="seo-faq-summary">Can I batch convert hundreds of photos at once?</summary>
                 <div class="seo-faq-answer">
-                  No. OmniResize uses multi-step bicubic resampling and optional unsharp-mask convolution filtering to preserve crisp lines and natural textures. For enlarging smaller photos, our <strong>2× HD</strong> and <strong>4× Ultra HD</strong> super-resolution upscalers enhance clarity without pixelation.
-                </div>
-              </details>
-
-              <details class="seo-faq-item">
-                <summary class="seo-faq-summary">How do I format an image for 300 DPI passport or printing?</summary>
-                <div class="seo-faq-answer">
-                  In the <strong>Resize</strong> tab, change the dimension unit from <code>px</code> to <code>in</code> (inches) or <code>mm</code>, enter your required physical size (e.g. 2×2 inches for US Passport, 35×45mm for EU/India), and set the DPI dropdown to <strong>300 DPI</strong>. OmniResize injects an authentic JFIF resolution header so printers and photo studios detect the exact 300 DPI metadata.
+                  Yes! Switch to our Bulk Resizer tab or drop multiple photos to batch convert them all to your selected format and download them together in a single ZIP file.
                 </div>
               </details>
             </div>
           </div>
-
         </div>
     </main>
 
@@ -1738,11 +1681,12 @@
               <li><a href="/resize-image-to-50kb" class="footer-link">Image Compressor</a></li>
               <li><a href="/crop-image" class="footer-link">Crop Image</a></li>
               <li><a href="/passport-photo-maker" class="footer-link">Passport Photo Maker</a></li>
-              <li><a href="#" class="footer-link" data-footer-action="collage">Collage Maker &amp; Joiner</a></li>
-              <li><a href="#" class="footer-link" data-footer-action="flip-rotate">Flip &amp; Rotate Image</a></li>
+              <li><a href="#" class="footer-link" data-footer-action="collage">Collage Maker & Joiner</a></li>
+              <li><a href="#" class="footer-link" data-footer-action="flip-rotate">Flip & Rotate Image</a></li>
               <li><a href="#" class="footer-link" data-footer-action="enlarge">Image Enlarger (2× / 4×)</a></li>
-              <li><a href="#" class="footer-link" data-footer-action="color-picker">Color Picker &amp; Palette</a></li>
+              <li><a href="#" class="footer-link" data-footer-action="color-picker">Color Picker & Palette</a></li>
               <li><a href="#" class="footer-link" data-footer-action="magic-eraser">Magic BG Eraser</a></li>
+              <li><a href="#" class="footer-link" data-footer-action="meme">Meme Generator</a></li>
             </ul>
           </div>
 
@@ -1750,7 +1694,6 @@
           <div class="footer-col">
             <h3 class="footer-col-title">Convert</h3>
             <ul class="footer-links-list">
-              <li><a href="/convert-image-format" class="footer-link">All Formats Converter</a></li>
               <li><a href="#" class="footer-link" data-footer-action="conv-jpg">Image to JPG / JPEG</a></li>
               <li><a href="#" class="footer-link" data-footer-action="conv-png">Image to PNG (Lossless)</a></li>
               <li><a href="#" class="footer-link" data-footer-action="conv-webp">WebP Converter</a></li>
@@ -1758,6 +1701,7 @@
               <li><a href="#" class="footer-link" data-footer-action="conv-pdf">Image to PDF</a></li>
               <li><a href="#" class="footer-link" data-footer-action="conv-png">PNG to JPG</a></li>
               <li><a href="#" class="footer-link" data-footer-action="conv-jpg">JPG to PNG</a></li>
+              <li><a href="#" class="footer-link" data-footer-action="conv-webp">PNG to WebP</a></li>
             </ul>
           </div>
 
@@ -1777,13 +1721,12 @@
           <div class="footer-col">
             <h3 class="footer-col-title">Target Compression</h3>
             <ul class="footer-links-list">
-              <li><a href="/resize-image-to-10kb" class="footer-link">Compress to &lt; 10 KB</a></li>
               <li><a href="/resize-image-to-20kb" class="footer-link">Compress to &lt; 20 KB</a></li>
-              <li><a href="/resize-image-to-30kb" class="footer-link">Compress to &lt; 30 KB</a></li>
               <li><a href="/resize-image-to-50kb" class="footer-link">Compress to &lt; 50 KB</a></li>
               <li><a href="/resize-image-to-100kb" class="footer-link">Compress to &lt; 100 KB</a></li>
-              <li><a href="/resize-image-to-200kb" class="footer-link">Compress to &lt; 200 KB</a></li>
-              <li><a href="/resize-image-to-500kb" class="footer-link">Compress to &lt; 500 KB</a></li>
+              <li><a href="#" class="footer-link" data-footer-action="target-kb" data-kb="200">Compress to &lt; 200 KB</a></li>
+              <li><a href="#" class="footer-link" data-footer-action="target-kb" data-kb="500">Compress to &lt; 500 KB</a></li>
+              <li><a href="#" class="footer-link" data-footer-action="target-kb" data-kb="1024">Compress to &lt; 1 MB</a></li>
             </ul>
           </div>
 
@@ -1807,6 +1750,9 @@
           </div>
 
           <div class="footer-bottom-actions">
+            
+            
+
             <!-- Language Selector -->
             <span class="footer-select-btn" title="Default Language">
               <i class="fa-solid fa-globe"></i> <span>English</span>
